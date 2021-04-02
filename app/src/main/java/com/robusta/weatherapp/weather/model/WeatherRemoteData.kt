@@ -2,7 +2,7 @@ package com.robusta.weatherapp.user.model
 
 
 import com.egabi.core.constants.Constants
-import com.robusta.weatherapp.commons.data.local.LoginPostModel
+import com.robusta.weatherapp.commons.data.remote.LoginPostModel
 import com.robusta.weatherapp.commons.data.local.UserResponseModel
 import com.robusta.weatherapp.commons.data.remote.CoreService
 import io.reactivex.Single

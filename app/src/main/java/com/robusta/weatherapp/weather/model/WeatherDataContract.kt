@@ -1,8 +1,9 @@
 package com.robusta.weatherapp.user.model
 
 import com.egabi.core.networking.Outcome
-import com.robusta.weatherapp.commons.data.local.LoginPostModel
+import com.robusta.weatherapp.commons.data.remote.LoginPostModel
 import com.robusta.weatherapp.commons.data.local.UserResponseModel
+import com.robusta.weatherapp.commons.data.local.dbmodel.PhotoWeatherHistoryItem
 import io.reactivex.Single
 import io.reactivex.subjects.PublishSubject
 
@@ -14,5 +15,11 @@ class WeatherDataContract {
 
     interface Remote {
         fun login(obj: LoginPostModel): Single<UserResponseModel>
+    }
+
+    interface Local {
+        fun insertPhoto(photo: PhotoWeatherHistoryItem)
+        fun deletePhoto()
+        fun getPhotos(): List<PhotoWeatherHistoryItem?>?
     }
 }

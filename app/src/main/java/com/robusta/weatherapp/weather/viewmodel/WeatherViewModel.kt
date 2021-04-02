@@ -8,7 +8,7 @@ import com.jakewharton.rxrelay2.BehaviorRelay
 import com.robusta.weatherapp.commons.BaseViewModel
 import com.robusta.weatherapp.commons.CoreDH
 import com.robusta.weatherapp.user.model.WeatherDataContract
-import com.robusta.weatherapp.commons.data.local.LoginPostModel
+import com.robusta.weatherapp.commons.data.remote.LoginPostModel
 import com.robusta.weatherapp.commons.data.local.UserResponseModel
 import io.reactivex.disposables.CompositeDisposable
 

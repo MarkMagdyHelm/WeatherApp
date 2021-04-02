@@ -3,7 +3,7 @@ package com.robusta.weatherapp.user.model
 import com.egabi.core.extensions.*
 import com.egabi.core.networking.Outcome
 import com.egabi.core.networking.Scheduler
-import com.robusta.weatherapp.commons.data.local.LoginPostModel
+import com.robusta.weatherapp.commons.data.remote.LoginPostModel
 import com.robusta.weatherapp.commons.data.local.UserResponseModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject

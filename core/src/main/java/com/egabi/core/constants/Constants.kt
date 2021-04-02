@@ -19,6 +19,9 @@ object Constants {
                 "Ar"
             }
         }
+    object Posts {
+        const val DB_NAME = "weather_db"
+    }
 
 
 }

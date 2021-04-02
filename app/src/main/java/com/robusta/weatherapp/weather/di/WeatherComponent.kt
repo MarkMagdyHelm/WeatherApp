@@ -1,11 +1,16 @@
 package com.robusta.weatherapp.weather.di
 
+import android.content.Context
+import androidx.room.Room
+import com.egabi.core.constants.Constants
 import com.egabi.core.di.CoreComponent
 import com.egabi.core.networking.Scheduler
+import com.robusta.weatherapp.commons.data.local.WeatherDb
 import com.robusta.weatherapp.commons.data.remote.CoreService
 import com.robusta.weatherapp.user.model.WeatherDataContract
 import com.robusta.weatherapp.user.model.WeatherRemoteData
 import com.robusta.weatherapp.user.model.WeatherRepository
+import com.robusta.weatherapp.weather.model.WeatherLocalData
 import com.robusta.weatherapp.weather.view.HomeFragment
 import com.robusta.weatherapp.weather.viewmodel.WeatherViewModel
 import com.robusta.weatherapp.weather.viewmodel.WeatherViewModelFactory
@@ -71,6 +76,14 @@ class WeatherModule {
     @Provides
     @WeatherScope
     fun providecompositeDisposable(): CompositeDisposable = CompositeDisposable()
+
+    @Provides
+    @WeatherScope
+    fun providelocalData(postDb: WeatherDb, scheduler: Scheduler): WeatherDataContract.Local = WeatherLocalData(postDb, scheduler)
+    /*Parent providers to dependents*/
+    @Provides
+    @WeatherScope
+    fun provideWeatherDb(context: Context): WeatherDb = Room.databaseBuilder(context, WeatherDb::class.java, Constants.Posts.DB_NAME).allowMainThreadQueries().build()
 
 
     @Provides
