@@ -4,17 +4,18 @@ import com.egabi.core.networking.Outcome
 import com.robusta.weatherapp.commons.data.remote.LoginPostModel
 import com.robusta.weatherapp.commons.data.local.UserResponseModel
 import com.robusta.weatherapp.commons.data.local.dbmodel.PhotoWeatherHistoryItem
+import com.robusta.weatherapp.commons.data.remote.WeatherResponse
 import io.reactivex.Single
 import io.reactivex.subjects.PublishSubject
 
 class WeatherDataContract {
     interface Repository {
-        val getUserDataFetchOutcome: PublishSubject<Outcome<UserResponseModel>>
-        fun login(obj: LoginPostModel)
+        var getWeatherDetailsOutcome: PublishSubject<Outcome<WeatherResponse>>
+        fun  getWeatherDetails(longitude :Double,latitude :Double)
     }
 
     interface Remote {
-        fun login(obj: LoginPostModel): Single<UserResponseModel>
+      fun  getWeatherDetails(longitude :Double,latitude :Double) : Single<WeatherResponse>
     }
 
     interface Local {

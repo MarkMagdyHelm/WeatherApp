@@ -83,7 +83,7 @@ class WeatherModule {
     /*Parent providers to dependents*/
     @Provides
     @WeatherScope
-    fun provideWeatherDb(context: Context): WeatherDb = Room.databaseBuilder(context, WeatherDb::class.java, Constants.Posts.DB_NAME).allowMainThreadQueries().build()
+    fun provideWeatherDb(context: Context): WeatherDb = Room.databaseBuilder(context, WeatherDb::class.java, Constants.DB_NAME).allowMainThreadQueries().build()
 
 
     @Provides
