@@ -11,7 +11,12 @@ import io.reactivex.subjects.PublishSubject
 class WeatherDataContract {
     interface Repository {
         var getWeatherDetailsOutcome: PublishSubject<Outcome<WeatherResponse>>
+        var getWeatherPhotoHistoryOutcome: PublishSubject<Outcome<List<PhotoWeatherHistoryItem?>?>>
+
         fun  getWeatherDetails(longitude :Double,latitude :Double)
+        fun insertPhoto(photo: PhotoWeatherHistoryItem)
+        fun deletePhoto()
+        fun getPhotos()
     }
 
     interface Remote {
@@ -21,6 +26,6 @@ class WeatherDataContract {
     interface Local {
         fun insertPhoto(photo: PhotoWeatherHistoryItem)
         fun deletePhoto()
-        fun getPhotos(): List<PhotoWeatherHistoryItem?>?
+        fun getPhotos():Single<List<PhotoWeatherHistoryItem?>?>
     }
 }

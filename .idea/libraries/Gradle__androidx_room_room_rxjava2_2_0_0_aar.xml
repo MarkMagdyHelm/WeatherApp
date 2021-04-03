@@ -1,9 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.room:room-rxjava2:2.0.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/78db5c8677f25692f5d9177a24348a65/room-rxjava2-2.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/78db5c8677f25692f5d9177a24348a65/room-rxjava2-2.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/78db5c8677f25692f5d9177a24348a65/room-rxjava2-2.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f1d6c3c3cbc6cabc6755c97b1c94825c/room-rxjava2-2.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/40d76662899994463387889a256700f4/room-rxjava2-2.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/40d76662899994463387889a256700f4/room-rxjava2-2.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/40d76662899994463387889a256700f4/room-rxjava2-2.0.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

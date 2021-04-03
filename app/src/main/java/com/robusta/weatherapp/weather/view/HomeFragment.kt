@@ -1,6 +1,11 @@
 package com.robusta.weatherapp.weather.view
 
+import android.app.Activity
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,14 +16,16 @@ import com.robusta.weatherapp.commons.CoreDH
 import com.robusta.weatherapp.weather.viewmodel.WeatherViewModel
 import com.robusta.weatherapp.weather.viewmodel.WeatherViewModelFactory
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.login.*
+import kotlinx.android.synthetic.main.fragment_home.*
+
 import javax.inject.Inject
 
 
+@Suppress("DEPRECATION")
 class HomeFragment : BaseFragment() {
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
     private val component by lazy { CoreDH.weatherComponent() }
-
+    val REQUEST_IMAGE_CAPTURE = 1
     @Inject
     lateinit var viewModelFactory: WeatherViewModelFactory
 
@@ -29,7 +36,7 @@ class HomeFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val root = inflater.inflate(R.layout.login, container, false)
+        val root = inflater.inflate(R.layout.fragment_home, container, false)
         component.inject(this)
         return root
     }
@@ -37,71 +44,32 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        get_weather_details_bt.setOnClickListener {
+            dispatchTakePictureIntent()
+         }
 
     }
+    private fun dispatchTakePictureIntent() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        try {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+        } catch (e: ActivityNotFoundException) {
+            // display error state to the user
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
+            val extras = data?.extras
+            val imageBitmap = extras?.get("data") as Bitmap
+            viewModel.setBackgroundImage(imageBitmap)
+            navigateToPhotoWeatherScreen()
+        }
+    }
 
-//    fun bindviewmodel(view: View) {
-//        viewModel.getUserDataFetchOutcome.observe(viewLifecycleOwner) { outcome ->
-//            when (outcome) {
-//                is Outcome.Progress ->
-//                    if(outcome.loading)
-//                    {  dialog!!.show()
-//                    }else{ dialog!!.dismiss()
-//                    }
-//                is Outcome.Success -> {
-//                    dialog!!.dismiss()
-//                    if (outcome.data.succeeded == true) {
-//                        (activity as MainActivity).showJobFailedLayout(
-//                            false,
-//                            ""
-//                        )
-//                        Constants.token = outcome.data.data?.bearerToken.toString()
-//                        outcome.data.data?.phoneNumber?.let { viewModel.phonenumber.accept(it) }
-//                        outcome.data.data?.email?.let { viewModel.email.accept(it) }
-//                        outcome.data.data?.fullname?.let { viewModel.fullname.accept(it) }
-//                        //navigate to home screen
-//                        //navigate to home screen
-//                        val navController = activity?.findNavController(R.id.login_host_fragment)
-//                        navController?.navigate(R.id.homeFragment2, null)
-//                    } else {
-//                        //error
-//                        (activity as MainActivity).showJobFailedLayout(
-//                            true,
-//                            outcome.data.errors?.get(0)?.errorMessage.toString()
-//                        )
-//                    }
-//                }
-//                is Outcome.Failure -> {
-//                    dialog!!.dismiss()
-//                    if (outcome.e is IOException)
-//                        (activity as MainActivity).showJobFailedLayout(
-//                            true,
-//                            outcome.e.localizedMessage
-//                        )
-//                    else
-//                        (activity as MainActivity).showJobFailedLayout(
-//                            true,
-//                            "try again later"
-//                        )
-//                }
-//
-//            }
-//        }
-//        view.proccedbtn.setOnClickListener { v ->
-//            viewModel.login()
-//        }
-//        view.guestbtn.setOnClickListener { v ->
-//            Constants.isGuest = true
-//            //navigate to home screen
-//            val navController = activity?.findNavController(R.id.login_host_fragment)
-//            navController?.navigate(R.id.homeFragment2, null)
-//        }
-//        viewModel.loginbuttonEnabledFormFragment.subscribe {
-//            Constants.isGuest = false
-//            enableSubmitBtn(it, view.proccedbtn)
-//        }.addTo(compositeDisposable)
-//        viewModel.initloginvalidation()
-//    }
+    private fun navigateToPhotoWeatherScreen() {
+        val navController = activity?.findNavController(R.id.main_host_fragment)
+        navController?.navigate(R.id.photoWeatherFragment, null)
+    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -1,9 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:2.1.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/da332d460cf88531c2682ebf1e1a013e/jetified-rxbinding-recyclerview-v7-kotlin-2.1.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/da332d460cf88531c2682ebf1e1a013e/jetified-rxbinding-recyclerview-v7-kotlin-2.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/da332d460cf88531c2682ebf1e1a013e/jetified-rxbinding-recyclerview-v7-kotlin-2.1.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b4e9088e54b3c308fefa077d0003d778/jetified-rxbinding-recyclerview-v7-kotlin-2.1.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b2b066e3ee81e3132951c3b5c3e65814/jetified-rxbinding-recyclerview-v7-kotlin-2.1.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b2b066e3ee81e3132951c3b5c3e65814/jetified-rxbinding-recyclerview-v7-kotlin-2.1.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b2b066e3ee81e3132951c3b5c3e65814/jetified-rxbinding-recyclerview-v7-kotlin-2.1.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton.rxbinding2/rxbinding-recyclerview-v7-kotlin/2.1.1/fa08a1a93f31831239d2b931db57b1c0c79e9480/rxbinding-recyclerview-v7-kotlin-2.1.1-javadoc.jar!/" />

@@ -2,11 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login"
-    app:startDestination="@id/loginFragment">
+    android:id="@+id/main"
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
+        android:id="@+id/homeFragment"
         android:name="com.robusta.weatherapp.weather.view.HomeFragment"
-        android:label="LoginFragment" />
+        android:label="homeFragment" />
+    <fragment
+        android:id="@+id/photoWeatherFragment"
+        android:name="com.robusta.weatherapp.weather.view.PhotoWeatherFragment"
+        android:label="PhotoWeatherFragment" />
+    <fragment
+        android:id="@+id/weatherPhotosHistoryFragment"
+        android:name="com.robusta.weatherapp.weather.view.WeatherPhotosHistoryFragment"
+        android:label="WeatherPhotosHistoryFragment" />
 </navigation>

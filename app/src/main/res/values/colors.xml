@@ -21,5 +21,6 @@
     <color name="colors_secondary">#324654</color>
     <color name="colors_red">#ff4949</color>
     <color name="transparent">#FFFFFFFF</color>
-
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="dialogBackground">#60000000</color>
 </resources>

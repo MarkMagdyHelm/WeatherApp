@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="start">أسحب لأعلى لنبدأ</string>
-    <string name="materials">\" مواد \"</string>
+    <string name="get_current_weather_details">Get Current Weather Details</string>
+    <string name="cant_get_location">Cann\'t get your location</string>
+    <string name="save">Save</string>
+    <string name="share">Share</string>
 </resources>

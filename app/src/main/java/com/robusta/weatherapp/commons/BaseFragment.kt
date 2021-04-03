@@ -13,13 +13,10 @@ import com.robusta.weatherapp.R
 import io.reactivex.disposables.Disposable
 
 open class BaseFragment : Fragment() {
-    var dialog: AlertDialog? = null
+    private val progressdialog = CustomProgressDialog()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialog = ProgressDialogUtil.setProgressDialog(
-            requireContext(),
-            requireActivity().getString(R.string.loading)
-        )
+
     }
     fun bindEditText(
         edittext: EditText,
@@ -32,7 +29,19 @@ open class BaseFragment : Fragment() {
                 )
             }
     }
+    fun showdialog()
+    {
+        progressdialog.show(requireContext(),
+            requireActivity().getString(R.string.loading))
+    }
+    fun dismissdialog()
+    {
+        if (progressdialog!=null)
+        {
+            progressdialog.dialog?.dismiss()
+        }
 
+    }
     internal fun enableSubmitBtn(enable: Boolean, view: Button) {
         view.isEnabled = enable
         if (enable) {

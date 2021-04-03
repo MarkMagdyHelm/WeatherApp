@@ -1,37 +1,38 @@
 package com.robusta.weatherapp.weather.view
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.View
+import android.view.WindowManager
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
+import com.egabi.core.constants.Constants
 import com.robusta.weatherapp.R
-import kotlinx.android.synthetic.main.login_activity_base.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.login_activity_base)
-
-
+        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.main_activity_base)
+        requestLocationPermission()
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(navController, drawer_layout)
-    }
-    private val navController by lazy {
-        Navigation.findNavController(this, R.id.login_host_fragment)
-    }
-    override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
+    private fun requestLocationPermission() {
+        val permReqLuncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+
+            Constants.canAccessLocationPermission = it
+        }
+
+        when (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+            PackageManager.PERMISSION_GRANTED -> {
+
+            }
+            PackageManager.PERMISSION_DENIED -> {
+
+                permReqLuncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+            }
         }
     }
-
 
 }

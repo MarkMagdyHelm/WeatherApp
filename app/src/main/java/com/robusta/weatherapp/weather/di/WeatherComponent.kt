@@ -12,6 +12,8 @@ import com.robusta.weatherapp.user.model.WeatherRemoteData
 import com.robusta.weatherapp.user.model.WeatherRepository
 import com.robusta.weatherapp.weather.model.WeatherLocalData
 import com.robusta.weatherapp.weather.view.HomeFragment
+import com.robusta.weatherapp.weather.view.PhotoWeatherFragment
+import com.robusta.weatherapp.weather.view.WeatherPhotosHistoryFragment
 import com.robusta.weatherapp.weather.viewmodel.WeatherViewModel
 import com.robusta.weatherapp.weather.viewmodel.WeatherViewModelFactory
 import dagger.Component
@@ -35,6 +37,8 @@ interface WeatherComponent {
     //Expose to dependent components
     fun coreService(): CoreService
     fun inject(Fragment: HomeFragment)
+    fun inject(Fragment: PhotoWeatherFragment)
+    fun inject(Fragment: WeatherPhotosHistoryFragment)
 }
 
 @Module
@@ -61,11 +65,12 @@ class WeatherModule {
     @Provides
     @WeatherScope
     fun provideRepository(
+        local: WeatherDataContract.Local,
         remote: WeatherDataContract.Remote,
         scheduler: Scheduler,
         compositeDisposable: CompositeDisposable
     ): WeatherDataContract.Repository =
-        WeatherRepository(remote, scheduler, compositeDisposable)
+        WeatherRepository(local,remote, scheduler, compositeDisposable)
 
     @Provides
     @WeatherScope
